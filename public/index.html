@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>TP Firebase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 830px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 30px 25px 25px 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px #cfd8dc50;
+    }
+    h2, h3 { text-align: center; margin-bottom: 20px; }
+    form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+    input[type="email"], input[type="password"], input[type="text"] {
+      border: 1px solid #ccd;
+      border-radius: 6px;
+      padding: 9px;
+      font-size: 16px;
+      background: #f1f3f4;
+      transition: border 0.2s;
+    }
+    input:focus { border: 1.5px solid #2196f3; outline: none;}
+    button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 10px 6px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: #1565c0;}
+    #logout-btn, #google-signin-btn {
+      margin-bottom: 12px;
+      width: 100%;
+    }
+    #google-signin-btn {
+      background: #fff;
+      color: #444;
+      border: 1px solid #bdbdbd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: normal;
+    }
+    #google-signin-btn img {
+      width: 20px;
+      vertical-align: middle;
+    }
+    #user-info {
+      font-size: 0.97em;
+      color: #1976d2;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    #messages-list {
+      margin-top: 18px;
+      min-height: 50px;
+    }
+    .msg-card {
+      background: #e3f2fd;
+      margin-bottom: 10px;
+      padding: 10px 14px 8px 14px;
+      border-radius: 7px;
+      border-left: 4px solid #1976d2;
+    }
+    .msg-meta {
+      color: #546e7a;
+      font-size: 13px;
+    }
+    hr { border: none; border-bottom: 1px solid #e0e0e0; margin: 24px 0 14px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>TP Firebase</h2>
+    <div id="auth-area">
+      <!-- Sign Up -->
+      <form id="signup-form">
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <input type="password" id="signup-password" placeholder="Mot de passe" required>
+        <button type="submit">Créer un compte</button>
+      </form>
+      <!-- Login -->
+      <form id="login-form">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Mot de passe" required>
+        <button type="submit">Se connecter</button>
+      </form>
+      <button id="google-signin-btn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google">
+        Continuer avec Google
+      </button>
+      <button id="logout-btn" style="display:none;">Se déconnecter</button>
+      <div id="user-info"></div>
+    </div>
+
+    <div id="message-area">
+      <form id="message-form">
+        <input type="text" id="message-input" placeholder="Votre message..." required>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+
+    <h3 id="messages-title">Messages</h3>
+    <div id="messages-list"></div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
